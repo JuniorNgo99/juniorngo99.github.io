@@ -2,227 +2,283 @@
 <html lang="vi">
 
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng Quay May Mắn</title>
 
-<title>Trang Chủ | Website Của Tôi</title>
+    <meta name="description"
+          content="Website vòng quay may mắn với 6 phần thưởng và âm nhạc.">
 
-<meta name="description" content="Website giới thiệu hiện đại được xây dựng bằng HTML và CSS, tối ưu trên máy tính và điện thoại.">
+    <meta name="author"
+          content="Website Của Tôi">
 
-<meta name="keywords" content="website, html, css, responsive, thiết kế web">
-
-<meta name="author" content="Website Của Tôi">
-
-
-<!-- Google AdSense -->
-<script async 
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9758374952637552"
-crossorigin="anonymous"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9758374952637552"
-     crossorigin="anonymous"></script>
-
-<!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="text.css">
-
+    <link rel="stylesheet"
+          href="text.css">
 </head>
-
 
 
 <body>
 
-
+<!-- ==================================================
+     HEADER
+================================================== -->
 
 <header>
 
+    <div class="logo">
+        🌸 Trang Chủ
+    </div>
 
-<div class="logo">
+    <nav>
 
-🌸 Trang Chủ
+        <a href="index.html">
+            Trang chủ
+        </a>
 
-</div>
+        <a href="gioithieu.html">
+            Giới thiệu
+        </a>
 
+        <a href="dichvu.html">
+            Dịch vụ
+        </a>
 
-<nav>
+        <a href="lienhe.html">
+            Liên hệ
+        </a>
 
-<a href="index.html">Trang chủ</a>
-
-<a href="gioithieu.html">Giới thiệu</a>
-
-<a href="dichvu.html">Dịch vụ</a>
-
-<a href="lienhe.html">Liên hệ</a>
-
-</nav>
-
+    </nav>
 
 </header>
 
 
-
+<!-- ==================================================
+     HERO
+================================================== -->
 
 <section class="hero">
 
+    <div class="container">
 
-<div class="container">
+        <div class="left">
 
+            <h1>
+                Xin chào 👋
+            </h1>
 
-<div class="left">
+            <p>
+                Chào mừng bạn đến với website của mình.
+                Hãy thử vận may bằng vòng quay bên dưới nhé! 🎁
+            </p>
 
+            <a href="#vong-quay"
+               class="btn">
 
-<h1>
+                🎡 Bắt đầu
 
-Xin chào 👋
+            </a>
 
-</h1>
-
-
-<p>
-
-Chào mừng bạn đến với website của mình.
-Giao diện hiện đại, tốc độ nhanh, tối ưu trên mọi thiết bị.
-
-</p>
-
-
-<a href="#" class="btn">
-
-Bắt đầu
-
-</a>
+        </div>
 
 
-</div>
+        <div class="right">
 
+            <img
+        src="hinh nen.png"
+        alt="Laptop công nghệ">
 
+        </div>
 
-<div class="right">
-
-
-<img 
-src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-alt="Laptop công nghệ">
-
-
-</div>
-
-
-</div>
-
+    </div>
 
 </section>
 
 
+<!-- ==================================================
+     VÒNG QUAY MAY MẮN
+================================================== -->
+
+<section class="lucky-wheel"
+         id="vong-quay">
+
+    <h2>
+        🎡 Vòng Quay May Mắn
+    </h2>
+
+    <p class="wheel-description">
+        Quay thử xem hôm nay bạn nhận được gì! 🎁
+    </p>
 
 
+    <div class="wheel-container">
+
+        <!-- MŨI TÊN -->
+
+        <div class="pointer">
+            ▼
+        </div>
+
+
+        <!-- VÒNG QUAY -->
+
+        <canvas
+            id="wheel"
+            width="600"
+            height="600">
+        </canvas>
+
+    </div>
+
+
+    <!-- NÚT QUAY -->
+
+    <button
+        id="spin"
+        type="button">
+
+        🎯 QUAY NGAY
+
+    </button>
+
+
+    <!-- KẾT QUẢ -->
+
+    <div id="result">
+
+        Hãy bấm QUAY NGAY để bắt đầu! 🎁
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     NHẠC
+     
+     6 file nhạc phải nằm cùng thư mục với index.html
+================================================== -->
+
+<audio
+    id="music1"
+    src="1.mp3"
+    preload="auto">
+</audio>
+
+<audio
+    id="music2"
+    src="2.mp3"
+    preload="auto">
+</audio>
+
+<audio
+    id="music3"
+    src="3.mp3"
+    preload="auto">
+</audio>
+
+<audio
+    id="music4"
+    src="4.mp3"
+    preload="auto">
+</audio>
+
+<audio
+    id="music5"
+    src="5.mp3"
+    preload="auto">
+</audio>
+
+<audio
+    id="music6"
+    src="6.mp3"
+    preload="auto">
+</audio>
+
+
+<!-- ==================================================
+     CARDS
+================================================== -->
 
 <section class="cards">
 
+    <div class="card">
 
-<div class="card">
+        <div class="card-icon">
+            🎨
+        </div>
 
+        <h2>
+            Thiết kế đẹp
+        </h2>
 
-<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
-alt="Thiết kế">
+        <p>
+            Giao diện hiện đại,
+            dễ sử dụng và thân thiện.
+        </p>
 
-
-<h2>
-
-Thiết kế đẹp
-
-</h2>
-
-
-<p>
-
-Giao diện hiện đại, dễ sử dụng và thân thiện.
-
-</p>
+    </div>
 
 
-</div>
+    <div class="card">
+
+        <div class="card-icon">
+            ⚡
+        </div>
+
+        <h2>
+            Tốc độ cao
+        </h2>
+
+        <p>
+            Tối ưu tốc độ tải trang
+            và trải nghiệm người dùng.
+        </p>
+
+    </div>
 
 
+    <div class="card">
 
+        <div class="card-icon">
+            📱
+        </div>
 
+        <h2>
+            Responsive
+        </h2>
 
-<div class="card">
+        <p>
+            Hiển thị đẹp trên điện thoại,
+            máy tính bảng và máy tính.
+        </p>
 
-
-<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png"
-alt="Tốc độ">
-
-
-<h2>
-
-Tốc độ cao
-
-</h2>
-
-
-<p>
-
-Tối ưu tốc độ tải trang và trải nghiệm người dùng.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<img src="https://cdn-icons-png.flaticon.com/512/888/888879.png"
-alt="Responsive">
-
-
-<h2>
-
-Responsive
-
-</h2>
-
-
-<p>
-
-Hiển thị đẹp trên điện thoại, máy tính bảng và PC.
-
-</p>
-
-
-</div>
-
-
+    </div>
 
 </section>
 
 
-
-
+<!-- ==================================================
+     FOOTER
+================================================== -->
 
 <footer>
 
-<p>
-
-© 2026 Website Của Tôi - Thiết kế bằng HTML & CSS ❤️
-
-</p>
+    <p>
+        © 2026 Website Của Tôi
+        - Thiết kế bằng HTML, CSS & JavaScript ❤️
+    </p>
 
 </footer>
 
 
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="script.js"></script>
 
 </body>
 

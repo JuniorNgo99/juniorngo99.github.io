@@ -1,465 +1,934 @@
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:
+        'Poppins',
+        sans-serif;
 }
 
 
-body{
+html {
+    scroll-behavior: smooth;
+}
 
-background:linear-gradient(135deg,#4facfe,#00f2fe);
 
-padding-top:90px;
+body {
+    background:
+        linear-gradient(
+            135deg,
+            #4facfe,
+            #00f2fe
+        );
+
+    padding-top: 90px;
+
+    overflow-x: hidden;
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 90px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 70px;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.2);
+
+    z-index: 9999;
+}
+
+
+.logo {
+
+    color: white;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    transition: .3s;
+}
+
+
+nav a:hover {
+
+    color: #ffff00;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+
+    min-height: 90vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 70px 20px;
+}
+
+
+.container {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+
+.left {
+
+    width: 50%;
+}
+
+
+.left h1 {
+
+    color: white;
+
+    font-size: 60px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+
+.left p {
+
+    color: white;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+.btn {
+
+    display: inline-block;
+
+    padding: 15px 40px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff5722
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+    box-shadow:
+        0 10px 25px
+        rgba(255,87,34,.3);
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    box-shadow:
+        0 15px 30px
+        rgba(255,87,34,.4);
+}
+
+
+.right {
+
+    width: 50%;
+}
+
+
+.right img {
+
+    width: 100%;
+
+    max-height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.3);
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+}
+
+
+/* ==================================================
+   VÒNG QUAY MAY MẮN
+================================================== */
+
+.lucky-wheel {
+
+    background: #ffffff;
+
+    padding: 90px 20px;
+
+    text-align: center;
+}
+
+
+.lucky-wheel h2 {
+
+    color: #2196f3;
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+.wheel-description {
+
+    color: #666;
+
+    font-size: 18px;
+
+    margin-bottom: 45px;
+}
+
+
+/* ==================================================
+   KHUNG VÒNG QUAY
+================================================== */
+
+.wheel-container {
+
+    position: relative;
+
+    width: 520px;
+
+    max-width: 90vw;
+
+    margin: 0 auto 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* ==================================================
+   CANVAS
+================================================== */
+
+#wheel {
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+
+        0 12px 35px
+        rgba(0,0,0,.25),
+
+        0 0 0 8px white,
+
+        0 0 0 13px #ff9800;
+}
+
+
+/* ==================================================
+   MŨI TÊN
+================================================== */
+
+.pointer {
+
+    position: absolute;
+
+    top: -24px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 0;
+
+    height: 0;
+
+    border-left:
+        28px solid transparent;
+
+    border-right:
+        28px solid transparent;
+
+    border-top:
+        60px solid #f44336;
+
+    z-index: 20;
+
+    filter:
+        drop-shadow(
+            0 4px 4px
+            rgba(0,0,0,.35)
+        );
+}
+
+
+/* ==================================================
+   NÚT QUAY
+================================================== */
+
+#spin {
+
+    border: none;
+
+    outline: none;
+
+    padding: 17px 48px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff5722
+        );
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(255,87,34,.35);
+
+    transition: .3s;
+}
+
+
+#spin:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+}
+
+
+#spin:active {
+
+    transform:
+        scale(.95);
+}
+
+
+#spin:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* ==================================================
+   KẾT QUẢ
+================================================== */
+
+#result {
+
+    min-height: 45px;
+
+    margin-top: 30px;
+
+    color: #e91e63;
+
+    font-size: 25px;
+
+    font-weight: 700;
+}
+
+
+#result strong {
+
+    color: #ff5722;
+}
+
+
+/* ==================================================
+   CARDS
+================================================== */
+
+.cards {
+
+    background: white;
+
+    padding: 90px 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.card {
+
+    width: 300px;
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.12);
+
+    transition: .3s;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-12px);
+
+    box-shadow:
+        0 20px 40px
+        rgba(0,0,0,.18);
+}
+
+
+.card img {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    margin:
+        0 auto 20px;
+}
+
+
+.card h2 {
+
+    color: #222;
+
+    margin-bottom: 15px;
+
+    font-size: 24px;
+}
+
+
+.card p {
+
+    color: #666;
+
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+
+    background: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 28px 20px;
+
+    font-size: 15px;
+}
+
+
+/* ==================================================
+   ABOUT PAGE
+   Giữ lại để các trang khác của bạn dùng được
+================================================== */
+
+.about-banner {
+
+    height: 500px;
+
+    background:
+        url("images/banner.jpg")
+        center/cover no-repeat;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+}
+
+
+.about-banner::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.45);
+}
+
+
+.overlay {
+
+    position: relative;
+
+    color: white;
+
+    text-align: center;
+}
+
+
+.overlay h1 {
+
+    font-size: 55px;
+
+    margin-bottom: 20px;
+}
+
+
+.overlay p {
+
+    font-size: 22px;
+}
+
+
+.about {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 60px;
+
+    padding: 80px 10%;
+
+    background: white;
+}
+
+
+.about-img img {
+
+    width: 500px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.3);
+}
+
+
+.about-text {
+
+    max-width: 550px;
+}
+
+
+.about-text h2 {
+
+    font-size: 40px;
+
+    color: #2196f3;
+
+    margin-bottom: 20px;
+}
+
+
+.about-text p {
+
+    font-size: 18px;
+
+    line-height: 32px;
+
+    margin-bottom: 20px;
+
+    color: #555;
+}
+
+
+.about-box {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    padding: 70px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4facfe,
+            #00f2fe
+        );
+
+    flex-wrap: wrap;
+}
+
+
+.box {
+
+    width: 250px;
+
+    background: white;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    transition: .4s;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.2);
+}
+
+
+.box:hover {
+
+    transform:
+        translateY(-15px);
+}
+
+
+.box h2 {
+
+    color: #2196f3;
+
+    font-size: 45px;
+}
+
+
+.box p {
+
+    margin-top: 10px;
+
+    color: #666;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 900px) {
+
+    header {
+
+        height: auto;
+
+        min-height: 90px;
+
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .logo {
+
+        font-size: 25px;
+    }
+
+
+    nav {
+
+        gap: 10px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    nav a {
+
+        font-size: 14px;
+
+        margin: 0;
+    }
+
+
+    body {
+
+        padding-top: 110px;
+    }
+
+
+    .hero {
+
+        padding: 60px 20px;
+    }
+
+
+    .container {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .left,
+    .right {
+
+        width: 100%;
+    }
+
+
+    .left h1 {
+
+        font-size: 45px;
+    }
+
+
+    .left p {
+
+        font-size: 17px;
+
+        line-height: 1.7;
+    }
+
+
+    .right img {
+
+        max-height: 350px;
+    }
+
+
+    .lucky-wheel {
+
+        padding: 70px 10px;
+    }
+
+
+    .lucky-wheel h2 {
+
+        font-size: 30px;
+    }
+
+
+    .wheel-container {
+
+        width: 360px;
+
+        max-width: 85vw;
+    }
+
+
+    #spin {
+
+        padding: 15px 35px;
+
+        font-size: 18px;
+    }
+
+
+    #result {
+
+        font-size: 21px;
+    }
+
+
+    .about {
+
+        flex-direction: column;
+    }
+
+
+    .about-img img {
+
+        width: 100%;
+    }
+
+
+    .overlay h1 {
+
+        font-size: 38px;
+    }
+
+
+    .overlay p {
+
+        font-size: 18px;
+    }
 
 }
 
 
-/* HEADER */
+/* ==================================================
+   ĐIỆN THOẠI NHỎ
+================================================== */
 
-header{
+@media (max-width: 480px) {
 
-position:fixed;
+    .wheel-container {
 
-top:0;
+        width: 300px;
 
-left:0;
+        max-width: 82vw;
+    }
 
-width:100%;
 
-display:flex;
+    .pointer {
 
-justify-content:space-between;
+        top: -18px;
 
-align-items:center;
+        border-left-width: 22px;
 
-padding:20px 80px;
+        border-right-width: 22px;
 
-background:rgba(255,255,255,.15);
+        border-top-width: 48px;
+    }
 
-backdrop-filter:blur(10px);
 
-z-index:1000;
+    .left h1 {
 
-}
+        font-size: 38px;
+    }
 
 
-.logo{
+    .lucky-wheel h2 {
 
-font-size:30px;
-
-font-weight:700;
-
-color:white;
-
-}
-
-
-nav a{
-
-color:white;
-
-text-decoration:none;
-
-margin-left:25px;
-
-font-weight:500;
-
-}
-
-
-nav a:hover{
-
-color:#ffff00;
-
-}
-
-
-
-/* HERO */
-
-
-.hero{
-
-min-height:90vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-padding:60px 20px;
-
-}
-
-
-.container{
-
-max-width:1200px;
-
-width:100%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-gap:40px;
-
-}
-
-
-.left{
-
-width:50%;
-
-}
-
-
-.left h1{
-
-font-size:60px;
-
-color:white;
-
-margin-bottom:20px;
-
-}
-
-
-.left p{
-
-font-size:20px;
-
-line-height:35px;
-
-color:white;
-
-margin-bottom:30px;
-
-}
-
-
-.btn{
-
-display:inline-block;
-
-padding:15px 40px;
-
-border-radius:50px;
-
-background:#ff9800;
-
-color:white;
-
-text-decoration:none;
-
-font-size:18px;
-
-transition:.3s;
-
-}
-
-
-.btn:hover{
-
-background:#ff5722;
-
-transform:scale(1.05);
-
-}
-
-
-
-.right{
-
-width:45%;
-
-}
-
-
-.right img{
-
-width:100%;
-
-border-radius:20px;
-
-box-shadow:0 20px 50px rgba(0,0,0,.3);
-
-}
-
-
-
-img{
-
-max-width:100%;
-
-height:auto;
-
-display:block;
-
-}
-
-
-
-/* CARD */
-
-
-.cards{
-
-background:white;
-
-padding:80px 20px;
-
-display:flex;
-
-justify-content:center;
-
-gap:30px;
-
-flex-wrap:wrap;
-
-}
-
-
-.card{
-
-width:300px;
-
-padding:30px;
-
-text-align:center;
-
-border-radius:20px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-transition:.3s;
-
-}
-
-
-.card:hover{
-
-transform:translateY(-15px);
-
-}
-
-
-.card img{
-
-width:90px;
-
-margin:auto;
-
-margin-bottom:20px;
-
-}
-
-
-.card h2{
-
-margin-bottom:15px;
-
-}
-
-
-.card p{
-
-color:#555;
-
-}
-
-
-
-/* FOOTER */
-
-
-footer{
-
-background:#222;
-
-color:white;
-
-text-align:center;
-
-padding:25px;
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:900px){
-
-
-header{
-
-padding:20px;
-
-flex-direction:column;
-
-}
-
-
-nav{
-
-margin-top:15px;
-
-}
-
-
-nav a{
-
-display:inline-block;
-
-margin:5px;
-
-}
-
-
-.container{
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
-
-.left,.right{
-
-width:100%;
-
-}
-
-
-.left h1{
-
-font-size:42px;
-
-}
-
-
-}
-.about-banner{
-    height:500px;
-    background:url("images/banner.jpg") center/cover no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-}
-
-.about-banner::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.45);
-}
-
-.overlay{
-    position:relative;
-    color:#fff;
-    text-align:center;
-}
-
-.overlay h1{
-    font-size:55px;
-    margin-bottom:20px;
-}
-
-.overlay p{
-    font-size:22px;
-}
-
-.about{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:60px;
-    padding:80px 10%;
-    background:#fff;
-}
-
-.about-img img{
-    width:500px;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,.3);
-}
-
-.about-text{
-    max-width:550px;
-}
-
-.about-text h2{
-    font-size:40px;
-    color:#2196f3;
-    margin-bottom:20px;
-}
-
-.about-text p{
-    font-size:18px;
-    line-height:32px;
-    margin-bottom:20px;
-    color:#555;
-}
-
-.about-box{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    padding:70px 20px;
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
-    flex-wrap:wrap;
-}
-
-.box{
-    width:250px;
-    background:#fff;
-    padding:35px;
-    text-align:center;
-    border-radius:20px;
-    transition:.4s;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
-
-.box:hover{
-    transform:translateY(-15px);
-}
-
-.box h2{
-    color:#2196f3;
-    font-size:45px;
-}
-
-.box p{
-    margin-top:10px;
-    color:#666;
-}
-
-@media(max-width:900px){
-
-.about{
-    flex-direction:column;
-}
-
-.about-img img{
-    width:100%;
-}
-
-.overlay h1{
-    font-size:38px;
-}
-
-.overlay p{
-    font-size:18px;
-}
+        font-size: 26px;
+    }
 
 }
